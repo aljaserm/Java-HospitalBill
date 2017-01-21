@@ -1,0 +1,67 @@
+
+package bill;
+import javax.swing.JOptionPane;
+public class bill 
+{
+
+	public static void main(String[] args) 
+	{
+		hospital hos=new bill.hospital();
+		hos.read_data();
+		hos.print_data();
+		hos.print_calc();
+		hos.high_data();
+		System.exit(0);
+	}
+	public static class hospital
+	{
+		String valu,hiname=" ";
+		String [] name=new String[5];
+		double [] bill=new double[5];
+		int i,count=0;
+		double avg,total=0,hibill=0;	
+		void read_data()
+		{
+			
+			for(i=0;i<=4;++i)
+			{
+				count=count+1;
+			String output="Enter The Patient Last Name ";
+				 name[i]  =JOptionPane.showInputDialog(null,
+				            output," ",JOptionPane.QUESTION_MESSAGE);
+				 output="Enter The Amount";
+		           valu =JOptionPane.showInputDialog(null,
+		           output," ",JOptionPane.QUESTION_MESSAGE);
+		           bill[i]=Double.parseDouble(valu);	
+		           total=total+bill[i];
+			}
+			avg=total/count;
+			for(i=0;i<=4;++i)
+			{
+				if(bill[i]>hibill)
+				{
+					hiname=name[i];
+					hibill=bill[i];
+				}
+			}
+		}
+		void print_data()
+		{
+			for(i=0;i<=4;++i)
+			{
+			System.out.println(name[i]+" "+bill[i]);
+			}
+		}
+		void print_calc()
+		{
+			System.out.println("Toatl Amount is "+total);
+			System.out.println("The Average Amount is "+avg);
+		}
+		void high_data()
+		{
+
+			System.out.println("The Highest bill is for "+hiname+" With amount "+hibill);
+		}
+	}
+	
+}
